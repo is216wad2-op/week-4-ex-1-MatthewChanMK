@@ -1,28 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 </head>
+
 <body>
-    
+
     <h2>Form Validation</h2>
 
-    <form name="form" action="." onsubmit="validateForm()" autocomplete="on" >
-            ID: <input type="text" name="id" ><br>
-            Age: <input type="number" name="age" ><br>
-            Email: <input type="text" name="email" ><br>
-            Password: <input type="password" name="password" ><br>
-            <input type="submit" value="Submit"><br>
-            <input type="reset" name="reset" value="Reset">
-        </form>
+    <form name="form" action="#" onsubmit="validateForm('form')" autocomplete="on">
+        ID: <input type="text" name="id"><br>
+        Age: <input type="number" name="age"><br>
+        Email: <input type="text" name="email"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Submit"><br>
+        <input type="reset" name="reset" value="Reset">
+    </form>
 
-        <script>
-        
-            function validateForm() {
-                var x = document.getElementsByName("id");
-                console.log(x);
+    <script>
+
+        function validateForm() {
+            var error_msg = "";
+            var id_check = document.getElementsByName("id").value;
+            var age_check = document.getElementsByName("age").value;
+            var email_check = document.getElementsByName("email").value;
+            var pw_check = document.getElementsByName("password").value;
+            if (id_check.length > 10) {
+                error_msg += "ID should be a maximum of 10 characters\n";
             }
-     
-         </script>
+            if (age_check < 10 || age_check > 40) {
+                error_msg += "Age must be between 10 and 40\n";
+            }
+            if (email_check.indexOf("@") == -1) {
+                error_msg += "Email must containe '@'\n";
+            }
+            if (pw_check.length == 0) {
+                error_msg += "Password must not be empty\n";
+            }
+
+            if (error_msg != "") {
+                alert(error_msg);
+                return false;
+            }
+            else {
+                return true;
+            }
+
+
+            console.log(pw_check);
+            console.log(id_check);
+        }
+
+    </script>
 </body>
+
 </html>

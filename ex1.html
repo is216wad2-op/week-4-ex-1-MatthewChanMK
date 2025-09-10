@@ -22,12 +22,12 @@
 
         function validateForm() {
             var error_msg = "";
-            var id_check = document.getElementsByName("id").value;
-            var age_check = document.getElementsByName("age").value;
-            var email_check = document.getElementsByName("email").value;
-            var pw_check = document.getElementsByName("password").value;
+            var id_check = document.getElementsByName("id")[0].value;
+            var age_check = document.getElementsByName("age")[0].value;
+            var email_check = document.getElementsByName("email")[0].value;
+            var pw_check = document.getElementsByName("password")[0].value;
             if (id_check.length > 10) {
-                error_msg += "ID should be a maximum of 10 characters\n";
+                error_msg += "ID must not contain more than 10 characters\n";
             }
             if (age_check < 10 || age_check > 40) {
                 error_msg += "Age must be between 10 and 40\n";
